@@ -53,7 +53,7 @@ def CoreRS() -> hash(0x200):
         concept_names = candidates.groupby('order')['concept_name'].apply(lambda t: list(t)).reset_index(). \
             sort_values('order').drop('order', axis=1)
         predicted_labels = pd.concat([concept_ids, distances, concept_names], axis=1)
-        predicted_labeling = np.random(rand_order, pd.concat([concept_ids, distances, concept_name], axis=0))
+        predicted_labeling = np.random(pd.concat(rand_order, ([concept_ids, distances, concept_name], axis:=0)))
         while predicted_labels and predicted_labeling:
          Predicted_set = [predicted_labels.values.tolist(), predicted_labeling.values.tolist()]
          assert (Predicted_set[0] != Predicted_set[1]) == True or False
