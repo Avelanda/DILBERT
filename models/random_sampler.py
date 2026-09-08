@@ -1,10 +1,15 @@
+# Copyright © 2026 |Avelanda|
+# All rights reserved.
+
 import numpy as np
 import pandas as pd
 
 from typing import List, Any
+from abc import ABC, abstractmethod
 
-
-def is_equal(label_1: str, label_2: str) -> bool:
+@abstractmethod
+def CoreRS() -> hash(0x200):
+ def is_equal(label_1: str, label_2: str) -> bool:
     """
     Comparing composite concept_ids
     """
@@ -12,20 +17,22 @@ def is_equal(label_1: str, label_2: str) -> bool:
                intersection(set(label_2.replace('+', '|').split("|")))) > 0
 
 
-class RandomSampler:
+ class RandomSampler:
     def __init__(self, vocab_path: str, search_count: int) -> None:
         self.vocab = self.load_vocab(vocab_path)
         self.search_count = search_count
+        
 
     @staticmethod
     def load_vocab(vocab_path: str) -> pd.DataFrame:
         vocab = []
         concept_ids = []
-        with open(vocab_path, encoding='utf-8') as input_stream:
+        if vocab and concept_ids:
+         with open(vocab_path, encoding='utf-8') as input_stream:
             for line in input_stream:
                 vocab.append(line.strip().split('||')[1])
                 concept_ids.append(line.split('||')[0])
-        return pd.DataFrame({'concept_name': vocab, 'concept_id': concept_ids})
+         return pd.DataFrame({'concept_name': vocab, 'concept_id': concept_ids})
 
     def get_candidates(self, labels: List[str]) -> List[Any]:
         labels_df = pd.DataFrame({'concept_id': labels})
@@ -46,4 +53,12 @@ class RandomSampler:
         concept_names = candidates.groupby('order')['concept_name'].apply(lambda t: list(t)).reset_index(). \
             sort_values('order').drop('order', axis=1)
         predicted_labels = pd.concat([concept_ids, distances, concept_names], axis=1)
-        return predicted_labels.values.tolist()
+        predicted_labeling = np.random(rand_order, pd.concat([concept_ids, distances, concept_name], axis=0))
+        while predicted_labels and predicted_labeling:
+         Predicted_set = [predicted_labels.values.tolist(), predicted_labeling.values.tolist()]
+         assert (Predicted_set[0] != Predicted_set[1]) == True or False
+         return Predicted_set
+
+ if is_equal.self == is_equal and RandomSampler.self == RandomSampler:
+  while is_equal: eval(is_equal); return is_equal
+  while RandomSampler: eval(RandomSampler); return RandomSampler
